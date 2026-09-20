@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225">
+  <rect width="400" height="225" fill="#eaeef2"/>
+  <line x1="40" y1="175" x2="360" y2="175" stroke="#c7d0da" stroke-width="1"/>
+
+  <!-- simple rising bar chart, standing in for an expense-tracking dashboard -->
+  <rect x="90" y="120" width="34" height="55" rx="3" fill="#c7d6e5"/>
+  <rect x="150" y="95" width="34" height="80" rx="3" fill="#a9c1d8"/>
+  <rect x="210" y="130" width="34" height="45" rx="3" fill="#c7d6e5"/>
+  <rect x="270" y="70" width="34" height="105" rx="3" fill="#2e5c8a"/>
+
+  <circle cx="287" cy="55" r="15" fill="#b8721f" opacity="0.9"/>
+  <text x="287" y="60" font-family="'IBM Plex Mono', Consolas, monospace" font-size="14" fill="#ffffff" text-anchor="middle">$</text>
+</svg>

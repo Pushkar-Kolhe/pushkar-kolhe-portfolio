@@ -1,0 +1,1255 @@
+/* ==========================================================================
+   PORTFOLIO STYLESHEET
+   --------------------------------------------------------------------------
+   Table of contents:
+     1. Design tokens (CSS variables) + dark theme overrides
+     2. Reset & base element styles
+     3. Layout helpers (container, section spacing)
+     4. Buttons & form controls
+     5. Header / navigation
+     6. Hero section
+     7. About section
+     8. Skills section
+     9. Projects section
+    10. Currently Learning section
+    11. Education section
+    12. Opportunity banner section
+    13. Contact section
+    14. Footer
+    15. Back-to-top button
+    16. Scroll-reveal animation
+    17. Responsive media queries
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS
+   All colors, fonts and spacing live here as CSS variables. Change a value
+   once and it updates everywhere it's used - this is what makes the site
+   easy to re-theme later.
+   -------------------------------------------------------------------------- */
+:root {
+  /* -- Colors: light theme (default) -- */
+  --color-bg: #f3f5f7;
+  --color-surface: #ffffff;
+  --color-surface-alt: #eaeef2;
+  --color-border: #dbe1e7;
+  --color-text: #151920;
+  --color-text-secondary: #566072;
+  --color-text-muted: #7c8698;
+
+  --color-primary: #2e5c8a;
+  --color-primary-dark: #1f4467;
+  --color-primary-soft: #dfe9f3;
+
+  --color-accent: #b8721f;
+  --color-accent-soft: #f3e4cc;
+
+  --color-danger: #b3261e;
+
+  /* -- Typography -- */
+  --font-display: "Space Grotesk", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+
+  /* -- Spacing scale -- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 5rem;
+
+  /* -- Layout -- */
+  --content-width: 1120px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border-width: 1px;
+
+  /* -- Motion -- */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* -- Effects -- */
+  --shadow-sm: 0 1px 2px rgba(15, 19, 26, 0.06);
+  --shadow-md: 0 6px 20px rgba(15, 19, 26, 0.08);
+}
+
+/* -- Colors: dark theme --
+   Applied when the <html> element carries data-theme="dark".
+   The toggle script (js/script.js) sets this attribute and remembers the
+   choice in localStorage. */
+[data-theme="dark"] {
+  --color-bg: #0f131a;
+  --color-surface: #171c25;
+  --color-surface-alt: #1e2530;
+  --color-border: #2b3240;
+  --color-text: #e7ecf2;
+  --color-text-secondary: #a6b0c0;
+  --color-text-muted: #7b8494;
+
+  --color-primary: #74a8dc;
+  --color-primary-dark: #a9cbec;
+  --color-primary-soft: #1d2c3c;
+
+  --color-accent: #e3a452;
+  --color-accent-soft: #362a18;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px; /* keeps section headings clear of the sticky nav */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  font-weight: 600;
+  margin: 0 0 var(--space-4);
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.2rem, 4vw + 1rem, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 2vw + 1rem, 2.1rem); }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 var(--space-4);
+  color: var(--color-text-secondary);
+  max-width: 62ch; /* keeps line length readable */
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* A single, consistent focus style for every interactive element.
+   Required for keyboard accessibility - never remove focus outlines
+   without replacing them with something equally visible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Respect users who have asked their OS to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* Skip-to-content link: hidden off-screen until a keyboard user tabs to it,
+   then it jumps above everything else so it's the very first stop. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  left: var(--space-4);
+  top: var(--space-4);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT HELPERS
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.section {
+  padding-block: var(--space-8);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.section-head {
+  margin-bottom: var(--space-6);
+  max-width: 640px;
+}
+
+.section-head p {
+  margin-bottom: 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-2);
+}
+
+.section-alt {
+  background-color: var(--color-surface);
+}
+
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS & FORM CONTROLS
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: var(--border-width) solid transparent;
+  transition: background-color var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.field {
+  margin-bottom: var(--space-4);
+}
+
+.field label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.field-error {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--color-danger);
+  margin-top: var(--space-1);
+  min-height: 1.1em;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  margin-top: var(--space-3);
+}
+
+.form-status[data-state="success"] {
+  color: var(--color-primary);
+}
+
+.form-status[data-state="error"] {
+  color: var(--color-danger);
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HEADER / NAVIGATION
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+}
+
+.nav-brand:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.nav-brand span {
+  color: var(--color-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-links a {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: var(--space-1) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+/* Added by script.js via IntersectionObserver as the visitor scrolls past
+   each section, so the nav always shows where you are on the page. */
+.nav-links a.is-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-primary);
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Sun/moon icon swap - only one is shown at a time, controlled from script.js */
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+.nav-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin-inline: auto;
+  background-color: var(--color-text);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Hamburger -> X animation when the mobile menu is open */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+
+/* --------------------------------------------------------------------------
+   6. HERO SECTION
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-block: var(--space-8) var(--space-7);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-7);
+  align-items: center;
+}
+
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-3);
+}
+
+.hero-name {
+  margin-bottom: var(--space-2);
+}
+
+.hero-role {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-5);
+}
+
+.hero-role .divider {
+  color: var(--color-border);
+  margin-inline: var(--space-2);
+}
+
+.hero-intro {
+  font-size: 1.05rem;
+  max-width: 56ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+
+.hero-social {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.hero-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.hero-social a:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.hero-social svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* -- "Currently" panel: the developer-themed visual element that stands
+   in for a hero photo. It's a small status board rather than a decorative
+   graphic, so it keeps telling the visitor something true while they read. */
+.status-panel {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.status-panel-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-width) solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.status-dot-group {
+  display: flex;
+  gap: 6px;
+}
+
+.status-dot-group span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+}
+
+.status-panel-body {
+  padding: var(--space-4);
+}
+
+.status-panel-body p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3);
+}
+
+.status-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.status-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.status-indicator {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+/* The blinking cursor: a small, single, deliberate motion moment rather
+   than animation scattered across the page. */
+.status-indicator.is-live {
+  position: relative;
+}
+
+.status-indicator.is-live::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--color-accent);
+  animation: pulse 2.2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; transform: scale(0.7); }
+  100% { opacity: 0; transform: scale(1.8); }
+}
+
+.status-item-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.status-item-sub {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. ABOUT SECTION
+   -------------------------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.about-grid p:last-child {
+  margin-bottom: 0;
+}
+
+.about-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--color-border);
+  margin-bottom: var(--space-5);
+}
+
+.about-facts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 260px;
+}
+
+.about-facts li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.about-facts li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.about-facts strong {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+}
+
+.about-facts span {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. SKILLS SECTION
+   -------------------------------------------------------------------------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-5);
+}
+
+.skill-group {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.skill-group h3 {
+  margin-bottom: var(--space-4);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.skill-tag .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* Status is communicated with both color AND text (below), never color
+   alone - important for accessibility / color-blind visitors. */
+.skill-tag[data-level="comfortable"] .dot { background-color: var(--color-primary); }
+.skill-tag[data-level="familiar"] .dot { background-color: var(--color-text-muted); }
+.skill-tag[data-level="learning"] .dot { background-color: var(--color-accent); }
+
+.skills-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.skills-legend li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skills-legend .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.skills-legend .dot.comfortable { background-color: var(--color-primary); }
+.skills-legend .dot.familiar { background-color: var(--color-text-muted); }
+.skills-legend .dot.learning { background-color: var(--color-accent); }
+
+
+/* --------------------------------------------------------------------------
+   9. PROJECTS SECTION
+   -------------------------------------------------------------------------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-5);
+}
+
+.project-card {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The top bar's color reports the project's status at a glance:
+   blue = a finished/basic build, amber = actively in progress. */
+.project-card-bar {
+  height: 4px;
+  background-color: var(--color-primary);
+}
+
+.project-card[data-status="building"] .project-card-bar {
+  background-color: var(--color-accent);
+}
+
+.project-card-image {
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-surface-alt);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card-body {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.project-card-head h3 {
+  margin-bottom: 0;
+}
+
+.status-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+}
+
+.project-card[data-status="building"] .status-badge {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.project-card-note {
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.project-card-links {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.project-card-more {
+  border: 1px dashed var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-6);
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. CURRENTLY LEARNING SECTION
+   -------------------------------------------------------------------------- */
+.learning-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-4);
+}
+
+.learning-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-left: 3px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+}
+
+.learning-card-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.learning-card-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.learning-card h3 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.learning-card p {
+  font-size: 0.88rem;
+  margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   11. EDUCATION SECTION
+   -------------------------------------------------------------------------- */
+.education-entry {
+  display: flex;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  max-width: 720px;
+}
+
+.education-marker {
+  flex-shrink: 0;
+  width: 3px;
+  border-radius: 2px;
+  background-color: var(--color-primary);
+}
+
+.education-degree {
+  margin-bottom: var(--space-1);
+}
+
+.education-status {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-3);
+}
+
+.education-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+}
+
+.education-meta strong {
+  color: var(--color-text);
+}
+
+
+/* --------------------------------------------------------------------------
+   12. OPPORTUNITY BANNER SECTION
+   -------------------------------------------------------------------------- */
+.opportunity-banner {
+  background-color: var(--color-primary-soft);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.opportunity-banner-text {
+  flex: 1 1 380px;
+}
+
+.opportunity-banner h2 {
+  margin-bottom: var(--space-3);
+}
+
+.opportunity-banner p {
+  max-width: 60ch;
+  margin-bottom: 0;
+}
+
+[data-theme="dark"] .opportunity-banner p {
+  color: var(--color-text-secondary);
+}
+
+
+/* --------------------------------------------------------------------------
+   13. CONTACT SECTION
+   -------------------------------------------------------------------------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: var(--space-7);
+}
+
+.contact-list {
+  margin-top: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.contact-list li a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.contact-list li a:hover {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.contact-list svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.contact-form {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+
+.contact-form-note {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+  margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------------------------------
+   14. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  padding-block: var(--space-6);
+}
+
+.footer-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer-brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.footer-tagline {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-5);
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: var(--border-width) solid var(--color-border);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+}
+
+
+/* --------------------------------------------------------------------------
+   15. BACK-TO-TOP BUTTON
+   -------------------------------------------------------------------------- */
+.back-to-top {
+  position: fixed;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity var(--transition-base), transform var(--transition-base),
+    visibility var(--transition-base);
+  z-index: 90;
+}
+
+/* Toggled from script.js once the visitor has scrolled past the hero */
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* --------------------------------------------------------------------------
+   16. SCROLL-REVEAL ANIMATION
+   Elements start slightly lower and transparent, then settle into place
+   the first time they enter the viewport (handled by an IntersectionObserver
+   in script.js). Kept subtle and consistent rather than a different effect
+   per section.
+   -------------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   17. RESPONSIVE MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .hero .container,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    order: -1;
+    max-width: 420px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .education-entry {
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 68px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+    background-color: var(--color-bg);
+    border-bottom: var(--border-width) solid var(--color-border);
+    padding: var(--space-5);
+    transform: translateY(-8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-base), transform var(--transition-base),
+      visibility var(--transition-base);
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: var(--space-2) 0;
+  }
+
+  .section {
+    padding-block: var(--space-7);
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

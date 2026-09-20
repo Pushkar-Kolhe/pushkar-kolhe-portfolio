@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pushkar Kolhe | Computer Engineering Student &amp; Java Full Stack Developer in Training</title>
+  <meta name="description" content="Portfolio of Pushkar, a final-year Computer Engineering student building skills in Java Full Stack development and exploring AI-powered applications." />
+
+  <!-- Favicon: a simple monogram, swap for your own icon whenever you like -->
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+
+  <!-- Google Fonts: Space Grotesk for headings, IBM Plex Sans for body text,
+       IBM Plex Mono for the small code-style labels. Remove this line and
+       the font-family variables in css/style.css if you'd rather self-host
+       fonts or use system fonts only. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Skip link: lets keyboard/screen-reader users jump straight past the
+       nav to the page content. Visually hidden until it receives focus. -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ======================= HEADER / NAVIGATION ======================= -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a href="#home" class="nav-brand">Pushkar <span>.</span></a>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#learning">Learning</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="assets/resume.pdf" download>Download Resume</a>
+
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+          <!-- Moon = "switch to dark" (shown in light mode). Sun = "switch to light" (shown in dark mode). -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.8v2.4M12 18.8v2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M2.8 12h2.4M18.8 12h2.4M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/>
+          </svg>
+        </button>
+
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <p class="hero-kicker">// final-year computer engineering student</p>
+          <h1 class="hero-name">Pushkar Kolhe</h1>
+          <p class="hero-role">
+            Java Full Stack Developer in Training
+            <span class="divider">|</span>
+            Exploring AI-Powered Applications
+          </p>
+          <p class="hero-intro">
+            I'm a final-year Computer Engineering student building my skills in Java Full
+            Stack development while exploring AI-powered applications. I enjoy learning
+            new technologies and turning ideas into practical projects.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="assets/resume.pdf" class="btn btn-outline" download>Download Resume</a>
+          </div>
+
+          <div class="hero-social" aria-label="Social links">
+            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" aria-label="GitHub profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.6 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.1 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/>
+                <path d="M8 10.5v6M8 7.8v.1M12.2 16.5v-3.6c0-1.4.9-2.4 2.2-2.4s2.1 1 2.1 2.4v3.6"/>
+              </svg>
+            </a>
+            <a href="mailto:your.email@example.com" aria-label="Send an email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="m4 7 8 6 8-6"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Developer-themed visual element: a small "currently" status panel
+             standing in for a hero photo. Update the items in the list
+             whenever what you're building or learning changes. -->
+        <div class="hero-panel">
+          <div class="status-panel">
+            <div class="status-panel-head">
+              <span class="status-dot-group"><span></span><span></span><span></span></span>
+              currently.json
+            </div>
+            <div class="status-panel-body">
+              <p>// what I'm working on right now</p>
+              <ul class="status-list">
+                <li class="status-item">
+                  <span class="status-indicator is-live"></span>
+                  <div>
+                    <div class="status-item-title">Building an AI chatbot</div>
+                    <div class="status-item-sub">personal project, in progress</div>
+                  </div>
+                </li>
+                <li class="status-item">
+                  <span class="status-indicator"></span>
+                  <div>
+                    <div class="status-item-title">Learning Spring Boot &amp; REST APIs</div>
+                    <div class="status-item-sub">Java Full Stack course</div>
+                  </div>
+                </li>
+                <li class="status-item">
+                  <span class="status-indicator"></span>
+                  <div>
+                    <div class="status-item-title">Preparing for internship applications</div>
+                    <div class="status-item-sub">final year, 2027 graduate</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ ABOUT ============================ -->
+    <section class="section section-alt" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="reveal">
+            <img class="about-avatar" src="images/avatar-placeholder.svg" alt="Placeholder avatar for Pushkar Kolhe" width="120" height="120" />
+            <ul class="about-facts">
+              <li><strong>Based in</strong><span>Pune, India</span></li>
+              <li><strong>Focus</strong><span>Java Full Stack Development</span></li>
+              <li><strong>Status</strong><span>Final-Year Student</span></li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <p class="eyebrow">About Me</p>
+            <h2>Still learning, already building</h2>
+            <p>
+              I am currently pursuing my Bachelor of Engineering in Computer Engineering.
+              I have a strong interest in software development and a good foundation in
+              Core Java. I am expanding my skills through a Java Full Stack course, where
+              I am learning how to build complete web applications.
+            </p>
+            <p>
+              Alongside full-stack development, I am exploring AI tools and experimenting
+              with AI-powered applications such as chatbots. I am currently focused on
+              improving my programming fundamentals, building practical projects, and
+              discovering which area of software development I want to specialize in.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ SKILLS ============================ -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Skills</p>
+          <h2>What I currently work with</h2>
+          <p>No inflated percentages here — just an honest read on where I'm comfortable and where I'm still building depth.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-group reveal">
+            <h3>Programming</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="comfortable"><span class="dot"></span>Java</span>
+              <span class="skill-tag" data-level="comfortable"><span class="dot"></span>Core Java</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3>Web Development</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="familiar"><span class="dot"></span>HTML5</span>
+              <span class="skill-tag" data-level="familiar"><span class="dot"></span>CSS3</span>
+              <span class="skill-tag" data-level="familiar"><span class="dot"></span>JavaScript</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3>Full Stack</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>Java Full Stack Development</span>
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>Spring Boot</span>
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>REST APIs</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3>Database</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>SQL / MySQL</span>
+            </div>
+          </div>
+
+          <div class="skill-group reveal">
+            <h3>AI</h3>
+            <div class="skill-tags">
+              <span class="skill-tag" data-level="familiar"><span class="dot"></span>AI Tools</span>
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>AI Application Development</span>
+              <span class="skill-tag" data-level="learning"><span class="dot"></span>AI Chatbot Development</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="skills-legend reveal">
+          <li><span class="dot comfortable"></span>Comfortable With</li>
+          <li><span class="dot familiar"></span>Familiar With</li>
+          <li><span class="dot learning"></span>Currently Learning</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================ PROJECTS ============================ -->
+    <section class="section section-alt" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>Things I've built (and am building)</h2>
+          <p>Small, honest projects — each one is a step toward being ready for real-world work.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROJECT CARD: copy this whole <article> block to add another
+               project. Just change the data-status, image, text and links. -->
+          <article class="project-card reveal" data-status="basic">
+            <div class="project-card-bar"></div>
+            <div class="project-card-image">
+              <img src="images/project-expense-manager.svg" alt="Abstract illustration representing the Expense Manager project" loading="lazy" />
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-head">
+                <h3>Expense Manager</h3>
+                <span class="status-badge">Basic Project</span>
+              </div>
+              <p>A personal expense management application designed to help users record, organize, and track their expenses.</p>
+              <p class="project-card-note">This is one of my initial projects and I plan to continue improving it by adding more features and functionality.</p>
+              <div class="project-card-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" data-status="building">
+            <div class="project-card-bar"></div>
+            <div class="project-card-image">
+              <img src="images/project-ai-chatbot.svg" alt="Abstract illustration representing the AI Chatbot project" loading="lazy" />
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-head">
+                <h3>AI Chatbot</h3>
+                <span class="status-badge">Currently Building</span>
+              </div>
+              <p>An AI-powered chatbot project that I am currently exploring and developing as part of my interest in AI applications and modern developer tools.</p>
+              <div class="project-card-links">
+                <a href="#" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                <a href="#" target="_blank" rel="noopener noreferrer">Live Demo &rarr;</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="project-card-more reveal">
+            More projects are on the way — this space is ready for the next one.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= CURRENTLY LEARNING ======================= -->
+    <section class="section" id="learning">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Currently Learning</p>
+          <h2>Actively building depth here</h2>
+        </div>
+
+        <div class="learning-grid">
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
+            </span>
+            <div><h3>Advanced Java</h3><p>Deepening core concepts beyond the basics</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 6v12M20 6v12M4 12h16M4 18h16"/></svg>
+            </span>
+            <div><h3>Java Full Stack Development</h3><p>Connecting front end, back end and database layers</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 6l9 4 9-4-9-4ZM3 6v12l9 4 9-4V6M12 10v12"/></svg>
+            </span>
+            <div><h3>Spring Boot</h3><p>Building REST-based back-end services</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+            </span>
+            <div><h3>SQL / Database Concepts</h3><p>Designing and querying relational data</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/></svg>
+            </span>
+            <div><h3>JavaScript</h3><p>Writing cleaner, more capable front-end logic</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4.5 4.5 0 0 0-4 6.6C6.6 10.6 6 11.9 6 13.3 6 16 8.2 18 11 18h2c2.8 0 5-2 5-4.7 0-1.4-.6-2.7-2-3.7A4.5 4.5 0 0 0 12 3Z"/><path d="M10 21h4M11 18v3M13 18v3"/></svg>
+            </span>
+            <div><h3>AI Tools</h3><p>Learning how to use AI tools effectively in real workflows</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a4.5 4.5 0 0 0-4 6.6C6.6 10.6 6 11.9 6 13.3 6 16 8.2 18 11 18h2c2.8 0 5-2 5-4.7 0-1.4-.6-2.7-2-3.7A4.5 4.5 0 0 0 12 3Z"/><path d="M10 21h4M11 18v3M13 18v3"/></svg>
+            </span>
+            <div><h3>AI-Powered Applications</h3><p>Exploring how AI features fit into everyday apps</p></div>
+          </div>
+
+          <div class="learning-card reveal">
+            <span class="learning-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v10H8l-4 4V5Z"/><path d="M8 9h8M8 12h5"/></svg>
+            </span>
+            <div><h3>Chatbot Development</h3><p>Building my first conversational AI project</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ EDUCATION ============================ -->
+    <section class="section section-alt" id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Education</p>
+          <h2>Academic background</h2>
+        </div>
+
+        <div class="education-entry reveal">
+          <div class="education-marker"></div>
+          <div>
+            <h3 class="education-degree">Bachelor of Engineering (BE) &ndash; Computer Engineering</h3>
+            <span class="education-status">Final Year</span>
+            <div class="education-meta">
+              <span><strong>College:</strong> Padmabhooshan Vasantdada Patil Institute of Technology (PVPIT), Bavdhan, Pune</span>
+              <span><strong>University:</strong> Savitribai Phule Pune University (SPPU)</span>
+              <span><strong>Expected Graduation:</strong> 2027</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= LOOKING FOR OPPORTUNITY ======================= -->
+    <section class="section">
+      <div class="container">
+        <div class="opportunity-banner reveal">
+          <div class="opportunity-banner-text">
+            <h2>Looking for My First Opportunity</h2>
+            <p>
+              I am currently looking for opportunities where I can apply my skills,
+              contribute to real-world projects, learn from experienced developers,
+              and grow as a software professional.
+            </p>
+          </div>
+          <a href="#contact" class="btn btn-primary">Let's Connect</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="reveal">
+            <p class="eyebrow">Contact</p>
+            <h2>Let's Connect</h2>
+            <p>
+              I'm currently exploring opportunities to begin my professional journey in
+              software development. If you'd like to connect, discuss a project, or
+              learn more about my work, feel free to reach out.
+            </p>
+
+            <ul class="contact-list">
+              <li>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+                  pushkarff587@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/Pushkar-Kolhe" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.6 2.8 5.5 3.1 5.5 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.1 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+                  github.com/Pushkar-Kolhe
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/pushkarkolhe07" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M8 10.5v6M8 7.8v.1M12.2 16.5v-3.6c0-1.4.9-2.4 2.2-2.4s2.1 1 2.1 2.4v3.6"/></svg>
+                  linkedin.com/in/pushkarkolhe07
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="reveal">
+            <form class="contact-form" id="contact-form" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="name" required />
+                <span class="field-error" id="name-error"></span>
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" required />
+                <span class="field-error" id="email-error"></span>
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <span class="field-error" id="message-error"></span>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+              <p class="contact-form-note">
+                This form has no backend yet — submitting opens your email app with the
+                message pre-filled. Connect it to a form service (like Formspree) later
+                if you'd rather receive messages directly.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">Pushkar</p>
+          <p class="footer-tagline">Computer Engineering Student | Java Full Stack | AI Enthusiast</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://github.com/Pushkar-Kolhe" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/pushkarkolhe07" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox" target="_blank" rel="noopener noreferrer">Email</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; <span id="current-year"></span> Pushkar. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </button>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

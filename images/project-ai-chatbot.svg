@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225">
+  <rect width="400" height="225" fill="#eaeef2"/>
+
+  <!-- two speech bubbles standing in for a chatbot conversation -->
+  <rect x="70" y="65" width="150" height="60" rx="14" fill="#a9c1d8"/>
+  <path d="M90 125 L90 145 L115 125 Z" fill="#a9c1d8"/>
+
+  <rect x="185" y="115" width="150" height="60" rx="14" fill="#2e5c8a"/>
+  <path d="M315 175 L315 195 L290 175 Z" fill="#2e5c8a"/>
+
+  <!-- small connected nodes suggesting an underlying model/network -->
+  <circle cx="245" cy="55" r="5" fill="#b8721f"/>
+  <circle cx="270" cy="40" r="5" fill="#b8721f"/>
+  <circle cx="220" cy="40" r="5" fill="#b8721f"/>
+  <line x1="245" y1="55" x2="270" y2="40" stroke="#b8721f" stroke-width="2"/>
+  <line x1="245" y1="55" x2="220" y2="40" stroke="#b8721f" stroke-width="2"/>
+</svg>
