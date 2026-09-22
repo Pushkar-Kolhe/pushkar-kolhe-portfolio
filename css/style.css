@@ -75,6 +75,11 @@
   /* -- Effects -- */
   --shadow-sm: 0 1px 2px rgba(15, 19, 26, 0.06);
   --shadow-md: 0 6px 20px rgba(15, 19, 26, 0.08);
+
+  /* -- Pushkar Kolhe (RGB) -- */
+  --rgb-red: #e63946;
+  --rgb-black: #1a1a1a;
+  --rgb-blue: #0077b6;
 }
 
 /* -- Colors: dark theme --
@@ -99,8 +104,25 @@
 
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  --rgb-red: #e63946 !important; 
+  --rgb-black: #1a1a1a!important;
+  --rgb-blue: #0077b6!important;
+}
+[data-theme="dark"] .rgb-black,
+html[data-theme="dark"] .rgb-black { 
+  color: #e7ecf2 !important; /* Automatically flips to light gray/white at night! */
 }
 
+[data-theme="dark"] .rgb-red,
+html[data-theme="dark"] .rgb-red {
+  color: #ff6b6b !important; /* Slightly brighter red for dark mode */
+}
+
+[data-theme="dark"] .rgb-blue,
+html[data-theme="dark"] .rgb-blue {
+  color: #4cc9f0 !important; /* Slightly brighter blue for dark mode */
+}
 
 /* --------------------------------------------------------------------------
    2. RESET & BASE STYLES
@@ -1253,3 +1275,11 @@ textarea:focus-visible {
     align-items: flex-start;
   }
 }
+/* ==========================================================================
+   Pushkar Kolhe (RGB)
+   ========================================================================== */
+   /*day*/
+   .rgb-red {color :#d90429 !important;} 
+   .rgb-black {color :#111111 !important;}
+   .rgb-blue {color :#0077b6 !important;}
+    
